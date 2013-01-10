@@ -12,11 +12,11 @@ There are lots of things to internationalize.
 2. Strings in HTML template
 3. Strings in javascript
 4. Common strings
--- Country Names, Language Names, etc.
+    - Country Names, Language Names, etc.
 5. Formatting
--- Date/Time formatting
--- Number formatting
--- Currency
+    - Date/Time formatting
+    - Number formatting
+    - Currency
 6. Timezone conversion
 
 This example only covers first 3 basic strings. To cover other aspect,
