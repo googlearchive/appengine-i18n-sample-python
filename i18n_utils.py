@@ -28,7 +28,7 @@ I18N_JAVASCRIPT = r'''
 function get_value_from_translations(translations, msgid) {
   var ret = translations['catalog'][msgid]
   if (typeof(ret) == 'undefined' &&
-      typeof(translations['fallback']) != 'undefined') {
+      translations['fallback'] != null) {
       ret = get_value_from_translations(translations['fallback'], msgid);
   }
   return ret;
@@ -90,9 +90,7 @@ def convert_translations_to_dict(js_translations):
         n_plural = 2
         plural = '(n == 1) ? 0 : 1'
 
-    translations_dict = {}
-    translations_dict['plural'] = plural
-    translations_dict['catalog'] = {}
+    translations_dict = {'plural': plural, 'catalog': {}, 'fallback': None}
     if js_translations._fallback is not None:
         translations_dict['fallback'] = convert_translations_to_dict(
             js_translations._fallback
