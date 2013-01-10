@@ -10,3 +10,4 @@ TODO
 - Write README
 - Add command lines for managements to README
 - Add lazy_gettext
+- Use memcache for translations
