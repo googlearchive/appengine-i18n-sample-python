@@ -75,19 +75,21 @@ String.prototype.format = function() {
 
 def convert_translations_to_dict(js_translations):
     plural = None
+    nplural = 2
     if '' in js_translations._catalog:
         for l in js_translations._catalog[''].split('\n'):
             if l.startswith('Plural-Forms:'):
                 plural = l.split(':',1)[1].strip()
     if plural is not None:
-        nplural = int([el.strip() for el in plural.split(';')
-                   if el.strip().startswith('nplurals=')][0].split('=',1)[1])
-        plural = [el.strip() for el in plural.split(';')
-                  if el.strip().startswith('plural=')][0].split('=',1)[1]
-
+        for element in map(unicode.strip, plural.split(';')):
+            if element.startswith('nplurals='):
+                nplural = int(element.split('=',1)[1])
+            elif element.startswith('plural='):
+                plural = element.split('=', 1)[1]
     else:
         nplural = 2
         plural = '(n == 1) ? 0 : 1'
+
     translations_dict = {}
     translations_dict['plural'] = plural
     translations_dict['catalog'] = {}
@@ -121,9 +123,12 @@ class BaseHandler(webapp2.RequestHandler):
             extensions=['jinja2.ext.i18n'])
         jinja2_env.install_gettext_translations(
             self.request.environ['active_translation'])
-        jinja2_env.globals['get_i18n_js'] = self.get_i18n_js
+        jinja2_env.globals['get_i18n_js_tag'] = self.get_i18n_js_tag
         self._jinja2_env = jinja2_env
         return jinja2_env
+
+    def get_i18n_js_tag(self):
+        return JAVASCRIPT_HEAD + self.get_i18n_js() + JAVASCRIPT_FOOT
 
     def get_i18n_js(self):
         import json
@@ -134,17 +139,11 @@ class BaseHandler(webapp2.RequestHandler):
                 languages=self.request.environ['preferred_languages'],
                 codeset='utf-8')
         except IOError:
-            return JAVASCRIPT_HEAD +\
-                   I18N_JAVASCRIPT_NULL +\
-                   STRING_FORMAT +\
-                   JAVASCRIPT_FOOT
+            return I18N_JAVASCRIPT_NULL + STRING_FORMAT
 
         translations_dict = convert_translations_to_dict(js_translations)
-        return JAVASCRIPT_HEAD +\
-               TRANSLATIONS_INIT % json.dumps(translations_dict, indent=1) + \
-               I18N_JAVASCRIPT + \
-               STRING_FORMAT + \
-               JAVASCRIPT_FOOT
+        return TRANSLATIONS_INIT % json.dumps(translations_dict, indent=1) +\
+               I18N_JAVASCRIPT + STRING_FORMAT
 
 
 
