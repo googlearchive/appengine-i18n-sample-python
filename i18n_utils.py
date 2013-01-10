@@ -75,7 +75,7 @@ String.prototype.format = function() {
 
 def convert_translations_to_dict(js_translations):
     plural = None
-    nplural = 2
+    n_plural = 2
     if '' in js_translations._catalog:
         for l in js_translations._catalog[''].split('\n'):
             if l.startswith('Plural-Forms:'):
@@ -83,11 +83,11 @@ def convert_translations_to_dict(js_translations):
     if plural is not None:
         for element in map(unicode.strip, plural.split(';')):
             if element.startswith('nplurals='):
-                nplural = int(element.split('=',1)[1])
+                n_plural = int(element.split('=',1)[1])
             elif element.startswith('plural='):
                 plural = element.split('=', 1)[1]
     else:
-        nplural = 2
+        n_plural = 2
         plural = '(n == 1) ? 0 : 1'
 
     translations_dict = {}
@@ -104,7 +104,7 @@ def convert_translations_to_dict(js_translations):
             translations_dict['catalog'][k] = v
         elif type(k) == tuple:
             if not k[0] in translations_dict['catalog']:
-                translations_dict['catalog'][k[0]] = [''] * nplural
+                translations_dict['catalog'][k[0]] = [''] * n_plural
             translations_dict['catalog'][k[0]][int(k[1])] = v
     return translations_dict
 
