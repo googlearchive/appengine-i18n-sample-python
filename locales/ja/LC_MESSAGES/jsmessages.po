@@ -1,0 +1,28 @@
+# Japanese translations for Hello.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the Hello project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hello World\n"
+"Report-Msgid-Bugs-To: tmatsuo@google.com\n"
+"POT-Creation-Date: 2013-01-09 15:51-0800\n"
+"PO-Revision-Date: 2013-01-09 15:52-0800\n"
+"Last-Translator: Takashi Matsuo <tmatsuo@google.com>\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: static/js/main.js:14
+msgid "Hello Javascript World!"
+msgstr "こんにちは、Javascript の世界！"
+
+#: static/js/main.js:17
+msgid "Please provide at least {0} item."
+msgid_plural "Please provide at least {0} items."
+msgstr[0] "少なくとも {0} 個の項目が必要です。"
+
