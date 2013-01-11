@@ -123,4 +123,4 @@ strings for number formatting. See this example:
     window.alert(ngettext(
         'You need to provide at least {0} item.',
         'You need to provide at least {0} items.',
-	n).format(n);
+        n).format(n);
