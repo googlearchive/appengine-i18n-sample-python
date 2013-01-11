@@ -1,15 +1,15 @@
-# Japanese translations for Hello.
+# Japanese translations for PROJECT.
 # Copyright (C) 2013 ORGANIZATION
-# This file is distributed under the same license as the Hello project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Hello World\n"
-"Report-Msgid-Bugs-To: tmatsuo@google.com\n"
-"POT-Creation-Date: 2013-01-09 15:51-0800\n"
-"PO-Revision-Date: 2013-01-09 15:52-0800\n"
-"Last-Translator: Takashi Matsuo <tmatsuo@google.com>\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2013-01-11 12:50-0800\n"
+"PO-Revision-Date: 2013-01-11 12:53-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: static/js/main.js:14
-msgid "Hello Javascript World!"
-msgstr "こんにちは、Javascript の世界！"
-
-#: static/js/main.js:17
-msgid "Please provide at least {0} item."
-msgid_plural "Please provide at least {0} items."
-msgstr[0] "少なくとも {0} 個の項目が必要です。"
+#: static/js/main.js:5
+msgid "Hello World from javascript!"
+msgstr "Javascript から、こんにちは、世界！"
 

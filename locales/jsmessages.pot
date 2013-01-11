@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-01-09 15:51-0800\n"
+"POT-Creation-Date: 2013-01-11 12:50-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: static/js/main.js:14
-msgid "Hello Javascript World!"
+#: static/js/main.js:5
+msgid "Hello World from javascript!"
 msgstr ""
-
-#: static/js/main.js:17
-msgid "Please provide at least {0} item."
-msgid_plural "Please provide at least {0} items."
-msgstr[0] ""
-msgstr[1] ""
 

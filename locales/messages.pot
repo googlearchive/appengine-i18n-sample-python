@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-01-08 14:28-0800\n"
+"POT-Creation-Date: 2013-01-11 12:46-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: main.py:26
-msgid "Hello World!"
+#: main.py:10
+msgid "Hello World from Python code!"
 msgstr ""
 
-#: templates/index.jinja2:4
-msgid "Hello Jinja2 World!"
+#: templates/index.jinja2:6
+msgid "Hello World from Jinja2 template!"
 msgstr ""
 
