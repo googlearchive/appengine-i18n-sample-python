@@ -9,8 +9,8 @@ JAVASCRIPT_HEAD = r'''
 <script type="text/javascript">
 '''
 
-TRANSLATIONS_INIT = r'''
-var translations = %s;
+TRANSLATIONS = r'''
+var translations = {0};
 '''
 
 JAVASCRIPT_FOOT = r'''
@@ -137,7 +137,7 @@ class BaseHandler(webapp2.RequestHandler):
             return I18N_JAVASCRIPT_NULL + STRING_FORMAT
 
         translations_dict = convert_translations_to_dict(js_translations)
-        return TRANSLATIONS_INIT % json.dumps(translations_dict, indent=1) +\
+        return TRANSLATIONS.format(json.dumps(translations_dict, indent=1)) +\
                I18N_JAVASCRIPT + STRING_FORMAT
 
 
