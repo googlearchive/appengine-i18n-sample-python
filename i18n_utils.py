@@ -79,11 +79,11 @@ def convert_translations_to_dict(js_translations):
     if '' in js_translations._catalog:
         for l in js_translations._catalog[''].split('\n'):
             if l.startswith('Plural-Forms:'):
-                plural = l.split(':',1)[1].strip()
+                plural = l.split(':', 1)[1].strip()
     if plural is not None:
         for element in map(unicode.strip, plural.split(';')):
             if element.startswith('nplurals='):
-                n_plural = int(element.split('=',1)[1])
+                n_plural = int(element.split('=', 1)[1])
             elif element.startswith('plural='):
                 plural = element.split('=', 1)[1]
     else:
@@ -111,7 +111,6 @@ class BaseHandler(webapp2.RequestHandler):
     @webapp2.cached_property
     def jinja2_env(self):
 
-        import os
         import jinja2
         jinja2_env = jinja2.Environment(
             loader=jinja2.FileSystemLoader(
