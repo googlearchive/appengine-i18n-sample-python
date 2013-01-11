@@ -2,6 +2,7 @@
 *~
 .idea
 \#*\#
+.\#*
 
 # C extensions
 *.so
