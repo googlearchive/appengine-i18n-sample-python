@@ -108,10 +108,8 @@ def convert_translations_to_dict(js_translations):
 
 
 class BaseHandler(webapp2.RequestHandler):
-    @property
+    @webapp2.cached_property
     def jinja2_env(self):
-        if hasattr(self, '_jinja2_env'):
-            return self._jinja2_env
 
         import os
         import jinja2
@@ -122,7 +120,6 @@ class BaseHandler(webapp2.RequestHandler):
         jinja2_env.install_gettext_translations(
             self.request.environ['active_translation'])
         jinja2_env.globals['get_i18n_js_tag'] = self.get_i18n_js_tag
-        self._jinja2_env = jinja2_env
         return jinja2_env
 
     def get_i18n_js_tag(self):
