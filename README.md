@@ -9,9 +9,9 @@ basic how-to.
 There are lots of things to internationalize with your web
 applications.
 
-1.  Strings in python code
+1.  Strings in Python code
 2.  Strings in HTML template
-3.  Strings in javascript
+3.  Strings in Javascript
 4.  Common strings
     - Country Names, Language Names, etc.
 5.  Formatting
@@ -30,15 +30,15 @@ module.
 ## Wait, so why not webapp2_extras.i18n?
 
 webapp2_extras.i18n doesn't cover how to internationalize strings in
-javascript code. Additionally it depends on babel and pytz, which
+Javascript code. Additionally it depends on babel and pytz, which
 means you need to deploy babel and pytz alongside with your code. I'd
 like to show a reasonably minimum example for string
 internationalization in Python code, jinja2 templates, as well as
-javascript.
+Javascript.
 
 ## How to run this example
 
-First of all, please install babel in your local python environment.
+First of all, please install babel in your local Python environment.
 
 ### Wait, you just said I don't need babel, are you crazy?
 
@@ -84,7 +84,7 @@ Note: If you run `pybabel init` against an existant translations file,
 you will lose your translations.
 
 
-### Extract strings in javascript code and compile translations
+### Extract strings in Javascript code and compile translations
 
     $ pybabel extract -o locales/jsmessages.pot -F js.mapping .
     $ pybabel init -l ja -d locales -i locales/jsmessages.pot -D jsmessages
@@ -111,12 +111,12 @@ extention, and similar to the `I18nMiddleware`, installs `gettext` and
 `ngettext` functions to the global namespace of the Jinja2
 environment.
 
-## What about javascript?
+## What about Javascript?
 
 The `BaseHandler` class also installs the `get_i18n_js_tag()` instance
 method to the Jinja2 global namespace. When you use this function in
-your Jinja2 template(like in the `index.jinja2` file), you will get a
-set of javascript functions; `gettext`, `ngettext`, and `format` on
+your Jinja2 template (like in the `index.jinja2` file), you will get a
+set of Javascript functions; `gettext`, `ngettext`, and `format` on
 the string type. The `format` function can be used with `ngettext`ed
 strings for number formatting. See this example:
 
