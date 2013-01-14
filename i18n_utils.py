@@ -5,73 +5,6 @@ import os
 import webapp2
 from webob.acceptparse import AcceptLanguage
 
-JAVASCRIPT_HEAD = r'''
-<script type="text/javascript">
-'''
-
-TRANSLATIONS = r'''
-var translations = {0};
-'''
-
-JAVASCRIPT_FOOT = r'''
-</script>
-'''
-
-I18N_JAVASCRIPT_NULL = r'''
-function gettext(s) { return s; };
-function ngettext(singular, plural, count) {
-  return (count == 1) ? singular :plural;
-}
-'''
-
-I18N_JAVASCRIPT = r'''
-function get_value_from_translations(translations, msgid) {
-  var ret = translations['catalog'][msgid]
-  if (typeof(ret) == 'undefined' &&
-      translations['fallback'] != null) {
-      ret = get_value_from_translations(translations['fallback'], msgid);
-  }
-  return ret;
-}
-
-function plural_index(count, translations) {
-  var s = 'var n = ' + count + '; var v = ' + translations['plural'];
-  eval(s);
-  return v;
-}
-
-function gettext(msgid) {
-  var value = get_value_from_translations(translations, msgid);
-
-  if (typeof(value) == 'undefined') {
-    return msgid;
-  } else {
-    return (typeof(value) == 'string') ? value : value[0];
-  }
-}
-
-function ngettext(singular, plural, count) {
-  var value = get_value_from_translations(translations, singular);
-
-  if (typeof(value) == 'undefined') {
-    return (count == 1) ? singular : plural;
-  } else {
-    return value[plural_index(count, translations)];
-  }
-}
-'''
-
-STRING_FORMAT = r'''
-String.prototype.format = function() {
-  var args = arguments;
-  return this.replace(/{(\d+)}/g, function(match, number) {
-    return typeof args[number] != 'undefined'
-      ? args[number]
-      : match
-    ;
-  });
-};
-'''
 
 def convert_translations_to_dict(js_translations):
     plural = None
@@ -122,7 +55,8 @@ class BaseHandler(webapp2.RequestHandler):
         return jinja2_env
 
     def get_i18n_js_tag(self):
-        return JAVASCRIPT_HEAD + self.get_i18n_js() + JAVASCRIPT_FOOT
+        template = self.jinja2_env.get_template('javascript_tag.jinja2')
+        return template.render({'javascript_body': self.get_i18n_js()})
 
     def get_i18n_js(self):
         import json
@@ -133,12 +67,13 @@ class BaseHandler(webapp2.RequestHandler):
                 languages=self.request.environ['preferred_languages'],
                 codeset='utf-8')
         except IOError:
-            return I18N_JAVASCRIPT_NULL + STRING_FORMAT
+            template = self.jinja2_env.get_template('null_i18n_js.jinja2')
+            return template.render()
 
         translations_dict = convert_translations_to_dict(js_translations)
-        return TRANSLATIONS.format(json.dumps(translations_dict, indent=1)) +\
-               I18N_JAVASCRIPT + STRING_FORMAT
-
+        template = self.jinja2_env.get_template('i18n_js.jinja2')
+        return template.render(
+              {'translations': json.dumps(translations_dict, indent=1)})
 
 
 class I18nMiddleware(object):
