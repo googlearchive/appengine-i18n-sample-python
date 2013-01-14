@@ -104,12 +104,12 @@ files(`messages.mo`) from the application directory, and install the
 `gettext` and `ngettext` functions to the `__builtin__` namespace in
 the Python runtime.
 
-There is the `i18n_utils.BaseHandler` class from which you can extend
-in order to have a handy property named `jinja2_env` that lazily
-initializes Jinja2 environment for you with the `jinja2.ext.i18n`
-extention, and similar to the `I18nMiddleware`, installs `gettext` and
-`ngettext` functions to the global namespace of the Jinja2
-environment.
+For strings in Jinja2 templates, there is the `i18n_utils.BaseHandler`
+class from which you can extend in order to have a handy property
+named `jinja2_env` that lazily initializes Jinja2 environment for you
+with the `jinja2.ext.i18n` extention, and similar to the
+`I18nMiddleware`, installs `gettext` and `ngettext` functions to the
+global namespace of the Jinja2 environment.
 
 ## What about Javascript?
 
