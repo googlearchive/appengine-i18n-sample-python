@@ -46,7 +46,8 @@ def convert_translations_to_dict(js_translations):
             if l.startswith('Plural-Forms:'):
                 plural = l.split(':', 1)[1].strip()
     if plural is not None:
-        for element in [raw_elm.strip() for raw_elm in plural.split(';')]:
+        for raw_element in plural.split(';'):
+            element = raw_element.strip()
             if element.startswith('nplurals='):
                 n_plural = int(element.split('=', 1)[1])
             elif element.startswith('plural='):
