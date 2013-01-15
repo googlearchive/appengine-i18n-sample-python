@@ -138,19 +138,22 @@ class BaseHandler(webapp2.RequestHandler):
 
 
 class I18nMiddleware(object):
-    """A WSGI middleware for determining users' preferred language, load
-    the translations files, and install it to the builtin namespace of
-    the Python runtime.
+    """A WSGI middleware for i18n.
+
+    This middleware determines users' preferred language, loads the
+    translations files, and install it to the builtin namespace of the
+    Python runtime.
     """
 
     def __init__(self, app, default_language='en', locale_path=None):
         """A constructor for this middleware.
 
         Args:
-          app: A WSGI app that you want to wrap with this middleware.
-          default_language: fallback language; ex: 'en', 'pl' or 'ja'
-          locale_path: A directory containing the translations file.
-                       (defaults to 'locales' directory)
+            app: A WSGI app that you want to wrap with this
+                middleware.
+            default_language: fallback language; ex: 'en', 'ja', etc.
+            locale_path: A directory containing the translations
+                file. (defaults to 'locales' directory)
         """
 
         self.app = app
