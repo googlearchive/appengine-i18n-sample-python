@@ -23,12 +23,18 @@ from i18n_utils import BaseHandler
 
 
 class MainHandler(BaseHandler):
-    """A simple handler demonstrating how to i18n in Python, Jinja2 and
-    Javascript.
+    """A simple handler with internationalized strings.
+
+    This handler demonstrates how to internationalize strings in
+    Python, Jinja2 template and Javascript.
     """
 
     def get(self):
-        """A get handler for this sample."""
+        """A get handler for this sample.
+
+        It just shows internationalized strings in Python, Jinja2
+        template and Javascript.
+        """
 
         context = dict(message=gettext('Hello World from Python code!'))
         template = self.jinja2_env.get_template('index.jinja2')

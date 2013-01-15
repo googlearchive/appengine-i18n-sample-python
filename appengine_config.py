@@ -19,8 +19,17 @@
 
 from i18n_utils import I18nMiddleware
 
+
 def webapp_add_wsgi_middleware(app):
-    """Applying the I18nMiddleware to our HelloWorld app."""
+    """Applying the I18nMiddleware to our HelloWorld app.
+
+    Args:
+        The WSGI application object that you want to wrap with the
+        I18nMiddleware.
+
+    Returns:
+        The wrapped WSGI application.
+    """
 
     app = I18nMiddleware(app)
     return app
