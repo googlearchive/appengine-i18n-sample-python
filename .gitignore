@@ -1,0 +1,9 @@
+*.py[cod]
+~
+.idea
+\#*#
+.#*
+
+# Translations
+*.mo
+
