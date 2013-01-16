@@ -24,8 +24,8 @@ def webapp_add_wsgi_middleware(app):
     """Applying the I18nMiddleware to our HelloWorld app.
 
     Args:
-        The WSGI application object that you want to wrap with the
-        I18nMiddleware.
+        app: The WSGI application object that you want to wrap with the
+            I18nMiddleware.
 
     Returns:
         The wrapped WSGI application.
