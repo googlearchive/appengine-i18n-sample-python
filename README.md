@@ -97,7 +97,7 @@ Open `locales/ja/LC_MESSAGES/jsmessages.po` and translate it.
 ## How it works
 
 As you can see it in the `appengine_config.py` file, our
-`mail.application` is wrapped by the `i18n_utils.I18nMiddleware` WSGI
+`main.application` is wrapped by the `i18n_utils.I18nMiddleware` WSGI
 middleware. When a request comes in, this middleware parses the
 `HTTP_ACCEPT_LANGUAGE` HTTP header, loads available translation
 files(`messages.mo`) from the application directory, and install the
