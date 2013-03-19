@@ -27,6 +27,7 @@ import os
 
 import jinja2
 import webapp2
+from webob import Request
 from webob.acceptparse import AcceptLanguage
 
 
@@ -175,9 +176,8 @@ class I18nMiddleware(object):
             Application response data as an iterable. It just returns
             the return value of the inner WSGI app.
         """
-        accept_language = AcceptLanguage(
-              environ.get("HTTP_ACCEPT_LANGUAGE", self.default_language))
-        preferred_languages = accept_language.best_matches()
+        req = Request(environ)
+        preferred_languages = list(req.accept_language)
         if not self.default_language in preferred_languages:
             preferred_languages.append(self.default_language)
         translation = gettext.translation(
