@@ -1,3 +1,9 @@
+![status: inactive](https://img.shields.io/badge/status-inactive-red.svg)
+
+This project has been moved.
+
+For new work on this check out [python-docs-samples/appengine/i18n](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/appengine/i18n)
+
 # appengine-i18n-sample-python
 
 A simple example app showing how to build an internationalized app
